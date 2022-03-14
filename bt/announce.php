@@ -64,11 +64,11 @@ $input_vars_num = array(
 // Init received data
 // String
 foreach ($input_vars_str as $var_name) {
-    $$var_name = isset($_GET[$var_name]) ? (string)$_GET[$var_name] : null;
+    ${$var_name} = isset($_GET[$var_name]) ? (string)$_GET[$var_name] : null;
 }
 // Numeric
 foreach ($input_vars_num as $var_name) {
-    $$var_name = isset($_GET[$var_name]) ? (float)$_GET[$var_name] : null;
+    ${$var_name} = isset($_GET[$var_name]) ? (float)$_GET[$var_name] : 0;
 }
 // Passkey
 $passkey = $$passkey_key ?? null;
@@ -79,7 +79,7 @@ if (!isset($info_hash) || strlen($info_hash) != 20) {
     msg_die('Invalid info_hash');
 }
 if (!isset($peer_id) || strlen($peer_id) != 20) {
-    msg_die('Invalid peer_id');
+    //msg_die('Invalid peer_id');
 }
 if (!isset($port) || $port < 0 || $port > 0xFFFF) {
     msg_die('Invalid port');
